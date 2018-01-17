@@ -1,0 +1,82 @@
+﻿@model MVC_Prueba.Models.Empleado
+
+@{
+    ViewBag.Title = "Datos";
+}
+
+<h2>Datos</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Legajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Legajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodVen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodVen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodSuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodSuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuncionP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuncionP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuncionS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuncionS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inactivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inactivo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

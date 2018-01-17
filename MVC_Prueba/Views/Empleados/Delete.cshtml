@@ -1,0 +1,88 @@
+﻿@model MVC_Prueba.Models.Empleado
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Está seguro que desea ELIMINAR?</h3>
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Legajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Legajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodVen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodVen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodSuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodSuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuncionP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuncionP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuncionS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuncionS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inactivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inactivo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>
