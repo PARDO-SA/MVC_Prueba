@@ -44,22 +44,22 @@ namespace MVC_Prueba.Controllers
                     {
                         Redeems.Add(new GORecognitionRedeemExport
                         {
-                            Fecha = row.Split(',')[0].ToString().Replace('\"', ' ').Trim(),
-                            Numero = row.Split(',')[1],
-                            Detalle = row.Split(',')[2],
-                            FechaUso = row.Split(',')[3],
-                            Tipo = row.Split(',')[4],
-                            Cantidad = row.Split(',')[5],
-                            DireccionEnvio = row.Split(',')[6],
-                            Duracion = row.Split(',')[7],
-                            Opcion = row.Split(',')[8],
-                            Puntos = row.Split(',')[9],
-                            Estado = row.Split(',')[10],
-                            Documento = row.Split(',')[11],
-                            ApellidoNombre = row.Split(',')[12],
-                            Contacto = row.Split(',')[13],
-                            Genero = row.Split(',')[14],
-                            FechaNacimiento = row.Split(',')[15]//,
+                            Fecha = Convert.ToDateTime(row.Split(',')[0].ToString().Replace('\"', ' ').Trim()),
+                            Numero = Convert.ToInt32(row.Split(',')[1].ToString().Replace('\"', ' ').Trim()),
+                            Detalle = row.Split(',')[2].ToString().Replace('\"', ' ').Trim(),
+                            //FechaUso = Convert.ToDateTime(row.Split(',')[3].ToString().Replace('\"', ' ').Trim()),
+                            Tipo = row.Split(',')[4].ToString().Replace('\"', ' ').Trim(),
+                            Cantidad = Convert.ToInt16(row.Split(',')[5].ToString().Replace('\"', ' ').Trim()),
+                            //DireccionEnvio = row.Split(',')[6].ToString().Replace('\"', ' ').Trim(),
+                            //Duracion = row.Split(',')[7].ToString().Replace('\"', ' ').Trim(),
+                            //Opcion = row.Split(',')[8].ToString().Replace('\"', ' ').Trim(),
+                            Puntos = Convert.ToInt16(row.Split(',')[9].ToString().Replace('\"', ' ').Trim()),
+                            Estado = row.Split(',')[10].ToString().Replace('\"', ' ').Trim(),
+                            Documento = Convert.ToInt32(row.Split(',')[11].ToString().Replace('\"', ' ').Trim()),
+                            ApellidoNombre = row.Split(',')[12].ToString().Replace('\"', ' ').Trim(),
+                            Contacto = row.Split(',')[13].ToString().Replace('\"', ' ').Trim(),
+                            //Genero = row.Split(',')[14].ToString().Replace('\"', ' ').Trim(),
+                            //FechaNacimiento = Convert.ToDateTime(row.Split(',')[15].ToString().Replace('\"', ' ').Trim())//,
                             //ReportaA = row.Split(',')[16]
                         });
                 }
