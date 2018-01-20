@@ -1,0 +1,72 @@
+﻿@model MVC_Prueba.Models.Clases.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomUsr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdmUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdmUsr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PswUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PswUsr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VtoPwdUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VtoPwdUsr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inactivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inactivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrpUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrpUsr)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

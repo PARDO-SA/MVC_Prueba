@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace MVC_Prueba.Models
+namespace MVC_Prueba.Models.Clases
 {
     [Table("PAR_EMPLE")]
     public class Empleado

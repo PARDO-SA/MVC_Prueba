@@ -1,0 +1,67 @@
+﻿@model MVC_Prueba.Models.Clases.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomUsr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdmUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdmUsr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PwdUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PwdUsr)
+            <input type="button" value="Mostrar Clave" id="ShowBtn"/>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VtoPwdUsr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VtoPwdUsr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inactivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inactivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grupo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodUsr }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

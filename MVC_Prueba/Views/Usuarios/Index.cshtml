@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MVC_Prueba.Models.Clases.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+    @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm())
+    {
+        <p>Nombre: @Html.TextBox("SearchString") <input type="submit" value="Buscar" /></p>
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomUsr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdmUsr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PwdUsr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VtoPwdUsr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inactivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grupo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomUsr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdmUsr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PwdUsr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VtoPwdUsr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inactivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grupo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CodUsr }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CodUsr }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CodUsr })
+                </td>
+            </tr>
+        }
+
+    </table>

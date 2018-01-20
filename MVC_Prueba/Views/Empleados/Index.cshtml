@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVC_Prueba.Models.Empleado>
+﻿@model IEnumerable<MVC_Prueba.Models.Clases.Empleado>
 
 @{
     ViewBag.Title = "Empleado";
@@ -6,7 +6,7 @@
 
 <h2>Empleados</h2>
 
-<p>
+
     @Html.ActionLink("Nuevo", "Create")
 
     @using (Html.BeginForm())
@@ -16,7 +16,7 @@
             Nombre: @Html.TextBox("SearchString") <input type="submit" value="Buscar" /> 
         </p>
     }
-</p>
+
 <table class="table">
     <tr>
         <th>

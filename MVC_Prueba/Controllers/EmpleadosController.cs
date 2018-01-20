@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MVC_Prueba.Models;
+using MVC_Prueba.Models.Clases;
 
 namespace MVC_Prueba.Controllers
 {

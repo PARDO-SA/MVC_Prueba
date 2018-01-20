@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 
-namespace MVC_Prueba.Models
+namespace MVC_Prueba.Models.Clases
 {
     public class CentralDBContext : DbContext
     {

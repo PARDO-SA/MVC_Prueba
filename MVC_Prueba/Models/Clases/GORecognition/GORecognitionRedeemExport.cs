@@ -40,6 +40,8 @@ namespace MVC_Prueba.Models
         //public DateTime FechaNacimiento { get; set; }
         //[Display(Name = "Reporta a")]
         //public string ReportaA { get; set; }
+        [Display(Name ="Importar")]
+        public bool Importar { get; set; }
     }
 
 }
