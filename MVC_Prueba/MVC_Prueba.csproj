@@ -179,6 +179,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ComisionesBPController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\GORecognition\GORecognitionRedeemExportController.cs" />
     <Compile Include="Controllers\HelloWordController.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Clases\ComisionesBP.cs" />
     <Compile Include="Models\Clases\Usuario.cs" />
     <Compile Include="Models\DBContext\CentralDBContext.cs" />
     <Compile Include="Models\Clases\Empleado.cs" />
@@ -273,6 +275,11 @@
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\ComisionesBP\Create.cshtml" />
+    <Content Include="Views\ComisionesBP\Delete.cshtml" />
+    <Content Include="Views\ComisionesBP\Details.cshtml" />
+    <Content Include="Views\ComisionesBP\Edit.cshtml" />
+    <Content Include="Views\ComisionesBP\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

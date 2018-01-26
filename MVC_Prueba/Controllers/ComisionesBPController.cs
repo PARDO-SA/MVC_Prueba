@@ -10,126 +10,107 @@ using MVC_Prueba.Models.Clases;
 
 namespace MVC_Prueba.Controllers
 {
-    public class EmpleadosController : Controller
+    public class ComisionesBPController : Controller
     {
         private CentralDBContext db = new CentralDBContext();
 
-        // GET: Empleados
-        public ActionResult Index(string sucursal, string searchString)
+        // GET: ComisionesBP
+        public ActionResult Index()
         {
-            var SucursalLst = new List<string>();
-            var SucursalQry = from d in db.Empleados orderby d.CodSuc select d.CodSuc;
-
-            SucursalLst.AddRange(SucursalQry.Distinct());
-            ViewBag.sucursal = new SelectList(SucursalLst);
-
-            var empleados = from m in db.Empleados select m;
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                empleados = empleados.Where(s => s.Nombre.Contains(searchString));
-            }
-
-            if (!string.IsNullOrEmpty(sucursal))
-            {
-                empleados = empleados.Where(x => x.CodSuc == sucursal);
-            }
-
-            //return View(db.Empleados.ToList());
-            return View(empleados);
+            return View(db.ComisionesBPs.ToList());
         }
 
-        // GET: Empleados/Details/5
-        public ActionResult Details(int? id)
+        // GET: ComisionesBP/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleados.Find(id);
-            if (empleado == null)
+            ComisionesBP comisionesBP = db.ComisionesBPs.Find(id);
+            if (comisionesBP == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(comisionesBP);
         }
 
-        // GET: Empleados/Create
+        // GET: ComisionesBP/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Empleados/Create
+        // POST: ComisionesBP/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,Nombre,CodVen,CodSuc,FuncionP,FuncionS,Inactivo,Legajo")] Empleado empleado)
+        public ActionResult Create([Bind(Include = "CodSuc,CodVen,Recibo,Comprobante,Cuota,CodArt,Vendedor,FechaRec,ImporteRec,CodCli,DesArt,Porcentaje,ImporteArt,ComisionVen,ComisionSuc,Periodo")] ComisionesBP comisionesBP)
         {
             if (ModelState.IsValid)
             {
-                db.Empleados.Add(empleado);
+                db.ComisionesBPs.Add(comisionesBP);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(empleado);
+            return View(comisionesBP);
         }
 
-        // GET: Empleados/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: ComisionesBP/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleados.Find(id);
-            if (empleado == null)
+            ComisionesBP comisionesBP = db.ComisionesBPs.Find(id);
+            if (comisionesBP == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(comisionesBP);
         }
 
-        // POST: Empleados/Edit/5
+        // POST: ComisionesBP/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,Nombre,CodVen,CodSuc,FuncionP,FuncionS,Inactivo,Legajo")] Empleado empleado)
+        public ActionResult Edit([Bind(Include = "CodSuc,CodVen,Recibo,Comprobante,Cuota,CodArt,Vendedor,FechaRec,ImporteRec,CodCli,DesArt,Porcentaje,ImporteArt,ComisionVen,ComisionSuc,Periodo")] ComisionesBP comisionesBP)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(empleado).State = EntityState.Modified;
+                db.Entry(comisionesBP).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(empleado);
+            return View(comisionesBP);
         }
 
-        // GET: Empleados/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: ComisionesBP/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleados.Find(id);
-            if (empleado == null)
+            ComisionesBP comisionesBP = db.ComisionesBPs.Find(id);
+            if (comisionesBP == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(comisionesBP);
         }
 
-        // POST: Empleados/Delete/5
+        // POST: ComisionesBP/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Empleado empleado = db.Empleados.Find(id);
-            db.Empleados.Remove(empleado);
+            ComisionesBP comisionesBP = db.ComisionesBPs.Find(id);
+            db.ComisionesBPs.Remove(comisionesBP);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

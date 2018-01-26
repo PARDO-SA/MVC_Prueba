@@ -7,8 +7,6 @@ namespace MVC_Prueba.Models.Clases
     [Table("SISUsuar")]
     public class Usuario
     {
-        private string clave;
-
         [Key]
         [Display(Name = "Código")]
         public string CodUsr { get; set; }
@@ -24,9 +22,6 @@ namespace MVC_Prueba.Models.Clases
         public Boolean Inactivo { get; set; }
         [Column("codgrp")]
         [Display(Name = "Grupo")]
-        public string Grupo { get; set; }
-
-
-        
+        public string Grupo { get; set; }       
     }
 }
