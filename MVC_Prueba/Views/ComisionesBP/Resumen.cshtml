@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MVC_Prueba.Models.Clases.Vistas.ViewResumenComisionesBP>
+
+@{
+    ViewBag.Title = "Resumen";
+}
+
+<h2>Resumen Comisiones Blister Pack</h2>
+
+@using (Html.BeginForm())
+{
+<p>
+    Período: @Html.DropDownList("periodo", "Seleccione Un Período") 
+    Sucursal: @Html.DropDownList("sucursal", "Todas")
+    <input type="submit" value="Buscar" />
+</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sucursal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Puntos)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sucursal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.Puntos)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td>Total</td>
+            <td></td>
+            <td align="right">@ViewBag.Total</td>
+        </tr>
+    </tfoot>
+
+</table>

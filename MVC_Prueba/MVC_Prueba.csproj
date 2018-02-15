@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Models\Clases\ComisionesBP.cs" />
     <Compile Include="Models\Clases\Usuario.cs" />
+    <Compile Include="Models\Clases\Vistas\ViewResumenComisionesBP.cs" />
     <Compile Include="Models\DBContext\CentralDBContext.cs" />
     <Compile Include="Models\Clases\Empleado.cs" />
     <Compile Include="Models\Clases\GORecognition\GORecognitionRedeemExport.cs" />
@@ -280,9 +281,11 @@
     <Content Include="Views\ComisionesBP\Details.cshtml" />
     <Content Include="Views\ComisionesBP\Edit.cshtml" />
     <Content Include="Views\ComisionesBP\Index.cshtml" />
+    <Content Include="Views\ComisionesBP\Resumen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Vistas\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

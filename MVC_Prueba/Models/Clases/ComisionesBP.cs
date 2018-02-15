@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
@@ -25,8 +26,9 @@ namespace MVC_Prueba.Models.Clases
         [Required, StringLength(16)]
         public string Recibo { get; set; }
 
-        [Column(Order = 4, TypeName ="date")]
+        [Column(Order = 4)]
         [Display(Name = "Fecha Recibo")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime FechaRec { get; set; }
 
         [Key]
@@ -73,7 +75,7 @@ namespace MVC_Prueba.Models.Clases
         public decimal ComisionSuc { get; set; }
 
         [Column(Order = 15)]
-        [Display(Name ="Período"), StringLength(4)]
+        [Display(Name ="Período"), StringLength(6)]
         public string Periodo { get; set; }
     }
 }
