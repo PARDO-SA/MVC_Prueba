@@ -81,6 +81,8 @@ ORDER BY x.codsuc, x.nombre";
 
                 var resumenComisiones = new List<ViewResumenComisionesBP>();
 
+                ViewBag.Total = 0;
+
                 if (!string.IsNullOrEmpty(periodo))
                 {
                     if (!string.IsNullOrEmpty(sucursal))
