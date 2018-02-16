@@ -78,6 +78,7 @@ ORDER BY x.codsuc, x.nombre";
             ViewBag.sucursal = new SelectList(SucursalLst);
 
             var resumenComisiones = new List<ViewResumenComisionesBP>();
+            ViewBag.Total = 0;
 
             if (!string.IsNullOrEmpty(periodo))
             {
