@@ -8,12 +8,13 @@ namespace MVC_Prueba.Models.Clases
     public class Usuario
     {
         [Key]
-        [Display(Name = "Código")]
+        [Display(Name = "Usuario")]
         public string CodUsr { get; set; }
         [Display(Name = "Nombre")]
         public string NomUsr { get; set; }
         [Display(Name = "Administrador")]
         public string AdmUsr { get; set; }
+        [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string PwdUsr { get; set; }
         [Display(Name = "Vencimiento Pwd")]

@@ -18,80 +18,90 @@ namespace MVC_Prueba.Controllers
         // GET: ComisionesBP
         public ActionResult Resumen(string periodo, string sucursal)
         {
-            var context = new CentralDBContext();
-            var query = @"SELECT sucursal = CONVERT(int, x.codsuc), x.nombre, x.email, puntos = ROUND(SUM(puntos),0)
-FROM (
-    SELECT c.codsuc, e.codven, e.email, e.nombre, puntos = SUM(c.comisionven)
-    FROM PAR_ComisionesBP c
-    LEFT JOIN PAR_Emple e ON e.codven = c.codven
-    WHERE c.periodo = @p0
-    AND e.inactivo = 0
-    AND e.funcionp = 'Vendedor'
-    GROUP BY e.email, e.nombre, c.codsuc, e.codven
-    UNION
-    SELECT c.codsuc, e.codven, e.email, e.nombre, puntos = SUM(c.comisionsuc / ce.cantidad)
-    FROM PAR_ComisionesBP c
-    LEFT JOIN PAR_Emple e ON e.codsuc = c.codsuc
-    LEFT JOIN(SELECT codsuc, cantidad = SUM(CASE WHEN rtrim(funcionp) <> 'Vendedor' OR(rtrim(funcionp) = 'Vendedor' AND rtrim(funcions) <> '') THEN 1 ELSE 0 END) FROM PAR_Emple WHERE inactivo = 0 GROUP BY codsuc) ce ON ce.codsuc = c.codsuc
-    WHERE c.periodo = @p0
-    AND e.inactivo = 0
-    AND(rtrim(e.funcionp) <> 'Vendedor' OR(rtrim(e.funcionp) = 'Vendedor' AND rtrim(e.funcions) <> ''))
-    GROUP BY e.email, e.nombre, c.codsuc, e.codven
-) x
-GROUP BY x.codsuc, x.nombre, x.email
-ORDER BY x.codsuc, x.nombre";
-
-            var querysuc = @"SELECT sucursal = CONVERT(int, x.codsuc), x.nombre, x.email, puntos = ROUND(SUM(puntos),0)
-FROM (
-    SELECT c.codsuc, e.codven, e.email, e.nombre, puntos = SUM(c.comisionven)
-    FROM PAR_ComisionesBP c
-    LEFT JOIN PAR_Emple e ON e.codven = c.codven
-    WHERE c.periodo = @p0
-    AND c.codsuc = @p1
-    AND e.inactivo = 0
-    AND e.funcionp = 'Vendedor'
-    GROUP BY e.email, e.nombre, c.codsuc, e.codven
-    UNION
-    SELECT c.codsuc, e.codven, e.email, e.nombre, puntos = SUM(c.comisionsuc / ce.cantidad)
-    FROM PAR_ComisionesBP c
-    LEFT JOIN PAR_Emple e ON e.codsuc = c.codsuc
-    LEFT JOIN(SELECT codsuc, cantidad = SUM(CASE WHEN rtrim(funcionp) <> 'Vendedor' OR(rtrim(funcionp) = 'Vendedor' AND rtrim(funcions) <> '') THEN 1 ELSE 0 END) FROM PAR_Emple WHERE inactivo = 0 GROUP BY codsuc) ce ON ce.codsuc = c.codsuc
-    WHERE c.periodo = @p0
-    AND c.codsuc = @p1
-    AND e.inactivo = 0
-    AND(rtrim(e.funcionp) <> 'Vendedor' OR(rtrim(e.funcionp) = 'Vendedor' AND rtrim(e.funcions) <> ''))
-    GROUP BY e.email, e.nombre, c.codsuc, e.codven
-) x
-GROUP BY x.codsuc, x.nombre, x.email
-ORDER BY x.codsuc, x.nombre";
-
-            var PeriodoLst = new List<string>();
-            var PeriodoQry = from p in db.ComisionesBPs orderby p.Periodo select p.Periodo;
-
-            PeriodoLst.AddRange(PeriodoQry.Distinct());
-            ViewBag.periodo = new SelectList(PeriodoLst);
-
-            var SucursalLst = new List<string>();
-            var SucursalQry = from e in db.Empleados orderby e.CodSuc select e.CodSuc;
-
-            SucursalLst.AddRange(SucursalQry.Distinct());
-            ViewBag.sucursal = new SelectList(SucursalLst);
-
-            var resumenComisiones = new List<ViewResumenComisionesBP>();
-
-            if (!string.IsNullOrEmpty(periodo))
+            if (Session["Codusr"] != null)
             {
-                if (!string.IsNullOrEmpty(sucursal))
-                {
-                    resumenComisiones = context.Database.SqlQuery<ViewResumenComisionesBP>(querysuc, periodo, sucursal).ToList();
-                } else
-                {
-                    resumenComisiones = context.Database.SqlQuery<ViewResumenComisionesBP>(query, periodo).ToList();
-                }
-                ViewBag.Total = resumenComisiones.Sum(x => x.Puntos);
-            }
+                var context = new CentralDBContext();
+                var query = @"SELECT sucursal = CONVERT(int, x.codsuc), x.nombre, x.email, puntos = ROUND(SUM(puntos),0)
+FROM (
+    SELECT c.codsuc, e.codven, e.email, e.nombre, puntos = SUM(c.comisionven)
+    FROM PAR_ComisionesBP c
+    LEFT JOIN PAR_Emple e ON e.codven = c.codven
+    WHERE c.periodo = @p0
+    AND e.inactivo = 0
+    AND e.funcionp = 'Vendedor'
+    GROUP BY e.email, e.nombre, c.codsuc, e.codven
+    UNION
+    SELECT c.codsuc, e.codven, e.email, e.nombre, puntos = SUM(c.comisionsuc / ce.cantidad)
+    FROM PAR_ComisionesBP c
+    LEFT JOIN PAR_Emple e ON e.codsuc = c.codsuc
+    LEFT JOIN(SELECT codsuc, cantidad = SUM(CASE WHEN rtrim(funcionp) <> 'Vendedor' OR(rtrim(funcionp) = 'Vendedor' AND rtrim(funcions) <> '') THEN 1 ELSE 0 END) FROM PAR_Emple WHERE inactivo = 0 GROUP BY codsuc) ce ON ce.codsuc = c.codsuc
+    WHERE c.periodo = @p0
+    AND e.inactivo = 0
+    AND(rtrim(e.funcionp) <> 'Vendedor' OR(rtrim(e.funcionp) = 'Vendedor' AND rtrim(e.funcions) <> ''))
+    GROUP BY e.email, e.nombre, c.codsuc, e.codven
+) x
+GROUP BY x.codsuc, x.nombre, x.email
+ORDER BY x.codsuc, x.nombre";
 
-            return View(resumenComisiones);
+                var querysuc = @"SELECT sucursal = CONVERT(int, x.codsuc), x.nombre, x.email, puntos = ROUND(SUM(puntos),0)
+FROM (
+    SELECT c.codsuc, e.codven, e.email, e.nombre, puntos = SUM(c.comisionven)
+    FROM PAR_ComisionesBP c
+    LEFT JOIN PAR_Emple e ON e.codven = c.codven
+    WHERE c.periodo = @p0
+    AND c.codsuc = @p1
+    AND e.inactivo = 0
+    AND e.funcionp = 'Vendedor'
+    GROUP BY e.email, e.nombre, c.codsuc, e.codven
+    UNION
+    SELECT c.codsuc, e.codven, e.email, e.nombre, puntos = SUM(c.comisionsuc / ce.cantidad)
+    FROM PAR_ComisionesBP c
+    LEFT JOIN PAR_Emple e ON e.codsuc = c.codsuc
+    LEFT JOIN(SELECT codsuc, cantidad = SUM(CASE WHEN rtrim(funcionp) <> 'Vendedor' OR(rtrim(funcionp) = 'Vendedor' AND rtrim(funcions) <> '') THEN 1 ELSE 0 END) FROM PAR_Emple WHERE inactivo = 0 GROUP BY codsuc) ce ON ce.codsuc = c.codsuc
+    WHERE c.periodo = @p0
+    AND c.codsuc = @p1
+    AND e.inactivo = 0
+    AND(rtrim(e.funcionp) <> 'Vendedor' OR(rtrim(e.funcionp) = 'Vendedor' AND rtrim(e.funcions) <> ''))
+    GROUP BY e.email, e.nombre, c.codsuc, e.codven
+) x
+GROUP BY x.codsuc, x.nombre, x.email
+ORDER BY x.codsuc, x.nombre";
+
+                var PeriodoLst = new List<string>();
+                var PeriodoQry = from p in db.ComisionesBPs orderby p.Periodo select p.Periodo;
+
+                PeriodoLst.AddRange(PeriodoQry.Distinct());
+                ViewBag.periodo = new SelectList(PeriodoLst);
+
+                var SucursalLst = new List<string>();
+                var SucursalQry = from e in db.Empleados orderby e.CodSuc select e.CodSuc;
+
+                SucursalLst.AddRange(SucursalQry.Distinct());
+                ViewBag.sucursal = new SelectList(SucursalLst);
+
+                var resumenComisiones = new List<ViewResumenComisionesBP>();
+
+                if (!string.IsNullOrEmpty(periodo))
+                {
+                    if (!string.IsNullOrEmpty(sucursal))
+                    {
+                        resumenComisiones = context.Database.SqlQuery<ViewResumenComisionesBP>(querysuc, periodo, sucursal).ToList();
+                    }
+                    else
+                    {
+                        resumenComisiones = context.Database.SqlQuery<ViewResumenComisionesBP>(query, periodo).ToList();
+                    }
+                    ViewBag.Total = resumenComisiones.Sum(x => x.Puntos);
+                }
+
+                return View(resumenComisiones);
+
+            }
+            else
+            {
+                return RedirectToAction("Logueo", "Login", null);
+            }
+           
         }
 
         // GET: ComisionesBP
