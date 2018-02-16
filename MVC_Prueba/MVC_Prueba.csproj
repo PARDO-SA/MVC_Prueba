@@ -184,17 +184,17 @@
     <Compile Include="Controllers\GORecognition\GORecognitionRedeemExportController.cs" />
     <Compile Include="Controllers\HelloWordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Clases\ComisionesBP.cs" />
     <Compile Include="Models\Clases\Usuario.cs" />
     <Compile Include="Models\Clases\Vistas\ViewResumenComisionesBP.cs" />
-    <Compile Include="Models\DBContext\CentralDBContext.cs" />
+    <Compile Include="Models\Contexto\CentralDBContext.cs" />
     <Compile Include="Models\Clases\Empleado.cs" />
     <Compile Include="Models\Clases\GORecognition\GORecognitionRedeemExport.cs" />
-    <Compile Include="Models\DBContext\SistemaDBContext.cs" />
+    <Compile Include="Models\Contexto\SistemaDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +283,7 @@
     <Content Include="Views\ComisionesBP\Edit.cshtml" />
     <Content Include="Views\ComisionesBP\Index.cshtml" />
     <Content Include="Views\ComisionesBP\Resumen.cshtml" />
+    <Content Include="Views\Login\Logueo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
