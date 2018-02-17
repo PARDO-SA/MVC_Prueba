@@ -4,15 +4,30 @@
     ViewBag.Title = "Resumen";
 }
 
-<h2>Resumen Comisiones Blister Pack</h2>
+<table>
+    <tr>
+        <td width="50%"><h2>Resumen Comisiones Blister Pack</h2></td>
+        <td width="30%"></td>
+        <td width="18%">
+            @if (Session["Codusr"] != null)
+    {
+        <h5>Bienvenido @Session["Nomusr"].ToString() </h5>
+}
+     
+        </td>
+        <td width="2%"> @Html.ActionLink("Salir","Salir", "Login")</td>
+    </tr>
+</table>
+
+
 
 @using (Html.BeginForm())
 {
-<p>
-    Período: @Html.DropDownList("periodo", "Seleccione Un Período") 
-    Sucursal: @Html.DropDownList("sucursal", "Todas")
-    <input type="submit" value="Buscar" />
-</p>
+    <p>
+        Período: @Html.DropDownList("periodo", "Seleccione Un Período")
+        Sucursal: @Html.DropDownList("sucursal", "Todas")
+        <input type="submit" value="Buscar" />
+    </p>
 }
 
 <table class="table">

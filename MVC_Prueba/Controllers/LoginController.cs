@@ -68,6 +68,14 @@ namespace MVC_Prueba.Controllers
             }
         }
 
+        
+        public ActionResult Salir()
+        {
+            Session.Abandon();
+            Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+            return RedirectToAction("Logueo");
+        }
+
         [NonAction]
         public string DecryptPwd(string clave)
         {
