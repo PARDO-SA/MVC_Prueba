@@ -180,6 +180,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComisionesBPController.cs" />
+    <Compile Include="Controllers\ComisionesController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\GORecognition\GORecognitionRedeemExportController.cs" />
     <Compile Include="Controllers\HelloWordController.cs" />
@@ -188,6 +189,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Clases\Comision.cs" />
+    <Compile Include="Models\Clases\ComisionArticulo.cs" />
     <Compile Include="Models\Clases\ComisionesBP.cs" />
     <Compile Include="Models\Clases\Usuario.cs" />
     <Compile Include="Models\Clases\Vistas\ViewResumenComisionesBP.cs" />
@@ -202,6 +205,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -225,6 +235,7 @@
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
     <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\DatePickerReady.js" />
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\globalize\currency.js" />
     <Content Include="Scripts\globalize\date.js" />
@@ -237,6 +248,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.validate.globalize.js" />
     <Content Include="Scripts\jquery.validate.globalize.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -284,6 +296,15 @@
     <Content Include="Views\ComisionesBP\Index.cshtml" />
     <Content Include="Views\ComisionesBP\Resumen.cshtml" />
     <Content Include="Views\Login\Logueo.cshtml" />
+    <Content Include="Uploads\redeemexport-778ae1c3e90d1f46261dba32a01bb4e6.csv" />
+    <Content Include="Uploads\redeemexport.csv" />
+    <Content Include="Views\Comisiones\Create.cshtml" />
+    <Content Include="Views\Comisiones\Delete.cshtml" />
+    <Content Include="Views\Comisiones\Details.cshtml" />
+    <Content Include="Views\Comisiones\Edit.cshtml" />
+    <Content Include="Views\Comisiones\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
